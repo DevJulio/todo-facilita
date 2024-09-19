@@ -5,7 +5,7 @@
         <div class="img-container">
           <!-- usando o figma normal, não consegui exportar as duas camadas mescladas, acabei inserindo o ícone manualmente e sem a borda -->
           <img src="../assets/images/logo.png" alt="Logo FacilitaTasks" />
-          <fa icon="check" style="margin-left: -2.5vw; margin-top: -0.5vw; color: #0ed984" />
+          <fa icon="check" style="margin-left: -2vw; margin-top: -0.5vw; color: #0ed984" />
         </div>
         <div class="brand-container">
           <span class="left-span"> FACILITA </span>

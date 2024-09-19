@@ -66,6 +66,7 @@
       padding 10px 0px 10px 0px
       align-items center
       margin-bottom -1px
+      cursor pointer
 
       .label
         color white
