@@ -1,7 +1,7 @@
 <template>
   <div
     class="action-item"
-    :id="divId"
+    :id="idItem"
     :style="{ backgroundColor: idItem == currentClicked ? '#1182F2' : '#2693FF' }"
   >
     <fa :icon="icon" style="color: white; font-size: 40px" />
