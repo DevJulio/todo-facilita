@@ -9,24 +9,52 @@
         />
       </div>
       <div class="actions-container">
-        <div class="action-item">
-          <fa icon="chart-column" style="color: white; font-size: 40px" />
-          <span class="label">Dashboard</span>
-        </div>
-        <div class="action-item">
-          <fa icon="circle-check" style="color: white; font-size: 40px" />
-          <span class="label">Tarefas</span>
-        </div>
-        <div class="action-item">
-          <fa icon="gears" style="color: white; font-size: 40px" />
-          <span class="label">Configurações</span>
-        </div>
+        <!-- Foram usados ícones compativeis e uma lógica para manter um item com destaque de cor-->
+        <FAActionItem
+          icon="chart-column"
+          label="Dashboard"
+          @click="handleClickAction(1)"
+          :current-clicked="activeAction"
+          idItem="1"
+        />
+        <FAActionItem
+          icon="circle-check"
+          label="Tarefas"
+          @click="handleClickAction(2)"
+          :current-clicked="activeAction"
+          idItem="2"
+        />
+        <FAActionItem
+          icon="gears"
+          label="Configurações"
+          @click="handleClickAction(3)"
+          :current-clicked="activeAction"
+          idItem="3"
+        />
       </div>
     </div>
     <div class="topbar">teste</div>
   </div>
 </template>
-<script></script>
+<script>
+import FAActionItem from '../components/action-item/ActionItem.vue'
+
+export default {
+  components: {
+    FAActionItem
+  },
+  data() {
+    return {
+      activeAction: 1
+    }
+  },
+  methods: {
+    handleClickAction(id) {
+      this.activeAction = id
+    }
+  }
+}
+</script>
 
 <style lang="stylus" scoped>
 @import '../assets/styles/theme.styl'
