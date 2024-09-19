@@ -18,8 +18,8 @@
       <div class="data-container">
         <span class="title"> Entre com seus dados de acesso. </span>
         <div class="form">
-          <FAInput label="Nome de usuário ou e-mail:" placeholder="" v-model="email" />
-          <FAInput label="Senha:" placeholder="" v-model="password" is-password="true" />
+          <FAInput label="Nome de usuário ou e-mail:" placeholder="" :v-model="email" />
+          <FAInput label="Senha:" placeholder="" :v-model="password" is-password="true" />
         </div>
         <div class="btn">
           <FAButton :action="login" label="Entrar" type="success" />

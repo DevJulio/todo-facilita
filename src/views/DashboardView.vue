@@ -33,7 +33,17 @@
         />
       </div>
     </div>
-    <div class="topbar">teste</div>
+    <div class="right-container">
+      <div class="topbar">
+        <div class="info-container">
+          <img src="../assets/images/profile.png" alt="profile" class="image" />
+          <div class="info">
+            <span class="top"> Eduardo Pereira da Costa </span>
+            <span class="bottom"> Front-end Developer </span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -66,45 +76,55 @@ export default {
   flex-direction row
 .sidebar
   display flex
-  height: 100vh;
+  height 100vh
   width 7%
   flex-direction column
   background-color $td-blue
   place-items center
-  place-content: center;
-
+  place-content center
   .img-container
     display flex
-    margin-top 2.5vw
-    .image
+    margin-top 1.3vw
+   .image
       width 70px
    .actions-container
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-grow 1
+    display flex
+    justify-content center
+    align-items center
     flex-direction column
-    width: 100%;
+    width 100%
     margin-top -6vh
-    .action-item
-      display: flex;
-      flex-direction column
-      width 100%
-      border solid #46A3FF 1px
-      padding 10px 0px 10px 0px
-      align-items center
-      margin-bottom -1px
-      cursor pointer
-
-      .label
-        color white
-        font-family $td-medium
-        margin-top 0.5vw
-
-.topbar
+.right-container
   display flex
-  height fit-content
-  width 100%
-  flex-direction row
-  background-color #fff
+  flex-direction column
+  width 93%
+  height 100%
+  .topbar
+    display flex
+    flex-direction row
+    height fit-content
+    width 100%
+    background-color #fff
+    .info-container
+      display flex
+      flex-direction row
+      margin-left auto
+      padding 2.5vh 5vh 4vh
+      .image
+        border-radius 25px
+        margin-right 0.5vw
+        cursor pointer
+      .info
+        display flex
+        flex-direction column
+        .top
+          font-family $td-semi-bold
+          color $td-title
+          font-size 18px
+          margin-bottom -7px
+        .bottom
+          font-family $td-semi-bold
+          color $td-blue
+          font-size 14px
 </style>
