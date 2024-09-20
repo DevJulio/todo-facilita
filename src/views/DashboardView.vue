@@ -95,16 +95,6 @@
             <h1>OPAAAA</h1>
             <h1>OPAAAA</h1>
             <h1>OPAAAA</h1>
-            <h1>OPAAAA</h1>
-            <h1>OPAAAA</h1>
-            <h1>OPAAAA</h1>
-            <h1>OPAAAA</h1>
-            <h1>OPAAAA</h1>
-            <h1>OPAAAA</h1>
-            <h1>OPAAAA</h1>
-            <h1>OPAAAA</h1>
-            <h1>OPAAAA</h1>
-            <h1>OPAAAA</h1>
           </div>
         </div>
       </div>
@@ -207,12 +197,11 @@ export default {
     display flex
     flex-direction column
     height 100%
-    place-content center
     .top-container
       display flex
       flex-direction column
       align-self center
-      margin-top -3vh
+      margin-top 10vh
       .title
         font-family $td-bold
         color $td-title
