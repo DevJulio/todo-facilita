@@ -90,6 +90,22 @@
             </div>
             <FASearchInput placeholder="Buscar Tarefas" />
           </div>
+          <div class="todo-list">
+            <h1>OPAAAA</h1>
+            <h1>OPAAAA</h1>
+            <h1>OPAAAA</h1>
+            <h1>OPAAAA</h1>
+            <h1>OPAAAA</h1>
+            <h1>OPAAAA</h1>
+            <h1>OPAAAA</h1>
+            <h1>OPAAAA</h1>
+            <h1>OPAAAA</h1>
+            <h1>OPAAAA</h1>
+            <h1>OPAAAA</h1>
+            <h1>OPAAAA</h1>
+            <h1>OPAAAA</h1>
+            <h1>OPAAAA</h1>
+          </div>
         </div>
       </div>
     </div>
@@ -214,4 +230,13 @@ export default {
         .emphasis_
           color $td-blue
           text-decoration underline
+     .todo-list
+      display flex
+      flex-direction column
+      max-height 35vh
+      overflow-y scroll
+      color black
+      align-items center
+      width 32.5vw
+      align-self center
 </style>

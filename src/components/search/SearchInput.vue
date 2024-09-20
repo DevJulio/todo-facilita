@@ -29,12 +29,6 @@ export default {
       default: false
     }
   },
-  computed: {
-    inputId() {
-      //Gera um id baseado na label
-      return this.label.toLowerCase().replace(/\s+/g, '-')
-    }
-  },
   methods: {
     updateValue(newValue) {
       this.$emit('input', newValue)
