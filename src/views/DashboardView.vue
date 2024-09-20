@@ -139,6 +139,7 @@ export default {
   flex-direction row
   height 100%
   width 100%
+
 .sidebar
   display flex
   height 100vh
@@ -147,12 +148,15 @@ export default {
   background-color $td-blue
   place-items center
   place-content center
+
   .img-container
     display flex
     margin-top 1.3vw
-   .image
+
+    .image
       width 70px
-   .actions-container
+
+  .actions-container
     flex-grow 1
     display flex
     justify-content center
@@ -160,74 +164,87 @@ export default {
     flex-direction column
     width 100%
     margin-top -6vh
+
 .right-container
   display flex
   flex-direction column
   width 100%
   height 100%
-  .dashboard-row
-   display flex
-   flex-direction row
-   height 100%
-   width 100%
-   .left-container
-    background-color #f4fbff
-    display flex
-    .data-container
-     flex-grow 1
-     display flex
-     justify-content center
-     align-items center
-     flex-direction column
-     color black
-     margin-top -10vh
 
-     .title
-      font-family $td-bold
-      color $td-title
-      font-size 22px
-      margin-bottom 7vh
-      margin-left -2.5vw
-     .filter-list
-      display flex
-      flex-direction column
-      width 100%
-   .right-container
-    background-color #e9f4fb
+  .dashboard-row
     display flex
-    flex-direction column
+    flex-direction row
     height 100%
-    .top-container
+    width 100%
+
+    .left-container
+      background-color #f4fbff
       display flex
-      flex-direction column
-      align-self center
-      margin-top 10vh
-      .title
-        font-family $td-bold
-        color $td-title
-        font-size 25px
-      .wellcome
+
+      .data-container
+        flex-grow 1
         display flex
-        flex-direction row
-        font-family $td-semi-bold
-        font-size 16px
-        column-gap 4px
-        margin-top -1vh
-        .regular
-          color #77899E
-        .emphasis
-          color $td-blue
-        .emphasis_
-          color $td-blue
-          text-decoration underline
-     .todo-list
+        justify-content center
+        align-items center
+        flex-direction column
+        color black
+        margin-top -10vh
+
+        .title
+          font-family $td-bold
+          color $td-title
+          font-size 22px
+          margin-bottom 7vh
+          margin-left -2.5vw
+
+        .filter-list
+          display flex
+          flex-direction column
+          width 100%
+
+    .right-container
+      background-color #e9f4fb
       display flex
       flex-direction column
-      max-height 45vh
-      margin-top 4vh
-      overflow-y scroll
-      color black
-      align-items center
-      width 32.5vw
-      align-self center
+      height 100%
+
+      .top-container
+        display flex
+        flex-direction column
+        align-self center
+        margin-top 10vh
+
+        .title
+          font-family $td-bold
+          color $td-title
+          font-size 25px
+
+        .wellcome
+          display flex
+          flex-direction row
+          font-family $td-semi-bold
+          font-size 16px
+          column-gap 4px
+          margin-top -1vh
+
+          .regular
+            color #77899E
+
+          .emphasis
+            color $td-blue
+
+          .emphasis_
+            color $td-blue
+            text-decoration underline
+
+      .todo-list
+        display flex
+        flex-direction column
+        max-height 45vh
+        margin-top 4vh
+        overflow-y scroll
+        color black
+        align-items center
+        width 32.5vw
+        align-self center
 </style>
