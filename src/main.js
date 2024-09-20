@@ -4,10 +4,16 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCheck, faCircleCheck, faChartColumn, faGears } from '@fortawesome/free-solid-svg-icons'
+import {
+  faCheck,
+  faCircleCheck,
+  faChartColumn,
+  faGears,
+  faChevronRight
+} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add([faCheck, faCircleCheck, faChartColumn, faGears])
+library.add([faCheck, faCircleCheck, faChartColumn, faGears, faChevronRight])
 
 const app = createApp(App).component('fa', FontAwesomeIcon)
 

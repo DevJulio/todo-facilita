@@ -35,26 +35,79 @@
     </div>
     <div class="right-container">
       <FATopBar />
+      <div class="dashboard-row">
+        <div class="left-container">
+          <div class="data-container">
+            <span class="title">Categorias</span>
+            <div class="filter-list">
+              <FAFilterItem
+                label="Todas"
+                @click="handleClickFilter(1)"
+                :current-clicked="activeFilter"
+                idItem="1"
+                qtd="1"
+              />
+              <FAFilterItem
+                label="Urgentes"
+                @click="handleClickFilter(2)"
+                :current-clicked="activeFilter"
+                idItem="2"
+                qtd="2"
+              />
+              <FAFilterItem
+                label="Importantes"
+                @click="handleClickFilter(3)"
+                :current-clicked="activeFilter"
+                idItem="3"
+                qtd="3"
+              />
+              <FAFilterItem
+                label="Outras"
+                @click="handleClickFilter(4)"
+                :current-clicked="activeFilter"
+                idItem="4"
+                qtd="4"
+              />
+              <FAFilterItem
+                label="Finalizada"
+                @click="handleClickFilter(5)"
+                :current-clicked="activeFilter"
+                idItem="5"
+                qtd="5"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="right-container">
+          <h1>aaa</h1>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 <script>
 import FAActionItem from '../components/action-item/ActionItem.vue'
 import FATopBar from '../components/top-bar/TopBar.vue'
+import FAFilterItem from '../components/filter-item/Filtertem.vue'
 
 export default {
   components: {
     FAActionItem,
-    FATopBar
+    FATopBar,
+    FAFilterItem
   },
   data() {
     return {
-      activeAction: 1
+      activeAction: 1,
+      activeFilter: 1
     }
   },
   methods: {
     handleClickAction(id) {
       this.activeAction = id
+    },
+    handleClickFilter(id) {
+      this.activeFilter = id
     }
   }
 }
@@ -65,9 +118,9 @@ export default {
 
 .home-container
   display flex
+  flex-direction row
   height 100%
   width 100%
-  flex-direction row
 .sidebar
   display flex
   height 100vh
@@ -92,6 +145,35 @@ export default {
 .right-container
   display flex
   flex-direction column
-  width 93%
+  width 100%
   height 100%
+  .dashboard-row
+   display flex
+   flex-direction row
+   height 100%
+   width 100%
+   .left-container
+    background-color #f4fbff
+    display flex
+    .data-container
+     flex-grow 1
+     display flex
+     justify-content center
+     align-items center
+     flex-direction column
+     color black
+     margin-top -10vh
+
+     .title
+      font-family $td-bold
+      color $td-title
+      font-size 22px
+      margin-bottom 7vh
+      margin-left -1.5vw
+     .filter-list
+      display flex
+      flex-direction column
+      width 100%
+   .right-container
+    background-color #e9f4fb
 </style>
