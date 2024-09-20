@@ -79,7 +79,17 @@
           </div>
         </div>
         <div class="right-container">
-          <h1>aaa</h1>
+          <div class="top-container">
+            <span class="title">Minhas Tarefas</span>
+            <div class="wellcome">
+              <span class="regular">Olá </span>
+              <span class="emphasis">Eduardo Pereira</span>
+              <span class="regular" style="margin-left: -4px">, você tem </span>
+              <span class="emphasis_">4 tarefas</span>
+              <span class="regular"> pendentes.</span>
+            </div>
+            <FASearchInput placeholder="Buscar Tarefas" />
+          </div>
         </div>
       </div>
     </div>
@@ -89,12 +99,14 @@
 import FAActionItem from '../components/action-item/ActionItem.vue'
 import FATopBar from '../components/top-bar/TopBar.vue'
 import FAFilterItem from '../components/filter-item/Filtertem.vue'
+import FASearchInput from '../components/search/SearchInput.vue'
 
 export default {
   components: {
     FAActionItem,
     FATopBar,
-    FAFilterItem
+    FAFilterItem,
+    FASearchInput
   },
   data() {
     return {
@@ -169,11 +181,37 @@ export default {
       color $td-title
       font-size 22px
       margin-bottom 7vh
-      margin-left -1.5vw
+      margin-left -2.5vw
      .filter-list
       display flex
       flex-direction column
       width 100%
    .right-container
     background-color #e9f4fb
+    display flex
+    flex-direction column
+    height 100%
+    place-content center
+    .top-container
+      display flex
+      flex-direction column
+      align-self center
+      .title
+        font-family $td-bold
+        color $td-title
+        font-size 25px
+      .wellcome
+        display flex
+        flex-direction row
+        font-family $td-semi-bold
+        font-size 16px
+        column-gap 4px
+        margin-top -1vh
+        .regular
+          color #77899E
+        .emphasis
+          color $td-blue
+        .emphasis_
+          color $td-blue
+          text-decoration underline
 </style>
