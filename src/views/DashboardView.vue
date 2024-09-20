@@ -212,6 +212,7 @@ export default {
       display flex
       flex-direction column
       align-self center
+      margin-top -3vh
       .title
         font-family $td-bold
         color $td-title
@@ -233,7 +234,8 @@ export default {
      .todo-list
       display flex
       flex-direction column
-      max-height 35vh
+      max-height 45vh
+      margin-top 4vh
       overflow-y scroll
       color black
       align-items center
