@@ -10,11 +10,20 @@ import {
   faChartColumn,
   faGears,
   faChevronRight,
-  faMagnifyingGlass
+  faMagnifyingGlass,
+  faEllipsisVertical
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add([faCheck, faCircleCheck, faChartColumn, faGears, faChevronRight, faMagnifyingGlass])
+library.add([
+  faCheck,
+  faCircleCheck,
+  faChartColumn,
+  faGears,
+  faChevronRight,
+  faMagnifyingGlass,
+  faEllipsisVertical
+])
 
 const app = createApp(App).component('fa', FontAwesomeIcon)
 

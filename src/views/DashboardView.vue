@@ -91,10 +91,15 @@
             <FASearchInput placeholder="Buscar Tarefas" />
           </div>
           <div class="todo-list">
-            <h1>OPAAAA</h1>
-            <h1>OPAAAA</h1>
-            <h1>OPAAAA</h1>
-            <h1>OPAAAA</h1>
+            <FATodoItem
+              label="Planejar desenvolvimento do app TodoList"
+              badge="Urgente"
+              :is-disabled="true"
+            />
+            <FATodoItem label="Criar projeto Vue.js" badge="Importante" />
+            <FATodoItem label="Montar telas HTML/CSS" badge="Importante" />
+            <FATodoItem label="Separar componentes" />
+            <FATodoItem label="Programar componentes" />
           </div>
         </div>
       </div>
@@ -106,13 +111,15 @@ import FAActionItem from '../components/action-item/ActionItem.vue'
 import FATopBar from '../components/top-bar/TopBar.vue'
 import FAFilterItem from '../components/filter-item/Filtertem.vue'
 import FASearchInput from '../components/search/SearchInput.vue'
+import FATodoItem from '../components/todo-item/TodoItem.vue'
 
 export default {
   components: {
     FAActionItem,
     FATopBar,
     FAFilterItem,
-    FASearchInput
+    FASearchInput,
+    FATodoItem
   },
   data() {
     return {
@@ -241,8 +248,8 @@ export default {
         display flex
         flex-direction column
         max-height 45vh
-        margin-top 4vh
-        overflow-y scroll
+        margin-top 3vh
+        overflow-y auto
         color black
         align-items center
         width 32.5vw
