@@ -10,12 +10,16 @@
     >
       {{ badge }}
     </div>
-    <fa icon="ellipsis-vertical" style="margin-left: 1vw; color: #9caec1; cursor: pointer" />
+    <FAPopOver />
   </div>
 </template>
 
 <script>
+import FAPopOver from '../pop-over/PopOver.vue'
 export default {
+  components: {
+    FAPopOver
+  },
   name: 'FATodoItem',
   props: {
     label: {
