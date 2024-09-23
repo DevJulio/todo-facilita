@@ -108,6 +108,7 @@ export default {
     flex-direction column
     align-self center
     margin-top -2vw
+    width 30vw
    .title
      font-size 20px
      font-family $td-bold

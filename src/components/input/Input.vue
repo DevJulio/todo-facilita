@@ -1,14 +1,23 @@
 <template>
   <div class="custom-input">
-    <span :for="inputId" class="label">{{ label }}</span>
+    <span :for="inputId" class="label" v-if="!isTextField">{{ label }}</span>
+
     <input
       class="input-style"
       :id="inputId"
       :placeholder="placeholder"
       :value="value"
       :type="inputType"
+      v-if="!isTextField"
       @input="updateValue($event.target.value)"
     />
+    <span class="label" v-if="isTextField">{{ label }}</span>
+    <textarea
+      class="input-style"
+      v-if="isTextField"
+      :rows="7"
+      @input="updateValue($event.target.value)"
+    ></textarea>
   </div>
 </template>
 
@@ -29,6 +38,10 @@ export default {
       default: ''
     },
     isPassword: {
+      type: Boolean,
+      default: false
+    },
+    isTextField: {
       type: Boolean,
       default: false
     }
@@ -62,11 +75,12 @@ export default {
   font-family $td-semi-bold
   color $td-input-lbl
 .input-style
-  padding 20px
+  padding 15px
   border 2px solid #BFDAEB
   border-radius 4px
   font-size 16px
-  width 30vw
+  width 100%
+  font-family $td-semi-bold
   transition border-color 0.3s ease
 
 &:focus

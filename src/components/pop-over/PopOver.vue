@@ -1,7 +1,7 @@
 <template>
   <!-- em um cenário real, o popover poderia ser um componente e receber os items de forma dinâmica para serem exibidos -->
-  <!-- os itens a serem exibidos podem ser um array com o elemento e a função a ser executada, nesse caso não faz sentido -->
-  <!-- já que o uso é único e exclusivo para a edição e exclusão de um item. -->
+  <!-- os itens a serem exibidos podem ser um array com o elemento e a função a ser executada, nesse caso  -->
+  <!-- o uso é único e exclusivo para a edição e exclusão de um item. -->
   <div class="popover-container">
     <fa
       icon="ellipsis-vertical"
@@ -25,22 +25,16 @@
         @click="togglePopover"
       />
     </div>
-    <!-- <FAModal :isVisible="isModalDeleteVisible" @close="closeModalConfirmDelete">
-      <h2>Dynamic Modal Content</h2>
-      <p>This content is passed dynamically using Vue's slot system.</p>
-    </FAModal> -->
     <FAModalConfirm :isVisible="isModalDeleteVisible" @close="closeModalConfirmDelete" />
   </div>
 </template>
 
 <script>
-import FAModal from '../modal/ModalComponent.vue'
 import FAModalConfirm from '../modal-confirm/ModalConfirm.vue'
 
 export default {
   name: 'FAPopOver',
   components: {
-    FAModal,
     FAModalConfirm
   },
   data() {
@@ -88,7 +82,7 @@ export default {
    display flex
    flex-direction column
    margin-top -5px
-   row-gap 3px
+   row-gap 10px
    .item
      display flex
      flex-direction row

@@ -109,12 +109,13 @@
             <FATodoItem label="Separar componentes" />
             <FATodoItem label="Programar componentes" />
           </div>
-          <div class="floating-btn">
+          <div class="floating-btn" @click="openModal">
             <span class="plus">+</span>
           </div>
         </div>
       </div>
     </div>
+    <FAModalForm :isVisible="isModalVisible" @close="closeModal" :title="title" />
   </div>
 </template>
 <script>
@@ -123,6 +124,7 @@ import FATopBar from '../components/top-bar/TopBar.vue'
 import FAFilterItem from '../components/filter-item/Filtertem.vue'
 import FASearchInput from '../components/search/SearchInput.vue'
 import FATodoItem from '../components/todo-item/TodoItem.vue'
+import FAModalForm from '../components/modal-form/ModalForm.vue'
 
 export default {
   components: {
@@ -130,12 +132,15 @@ export default {
     FATopBar,
     FAFilterItem,
     FASearchInput,
-    FATodoItem
+    FATodoItem,
+    FAModalForm
   },
   data() {
     return {
       activeAction: 1,
-      activeFilter: 1
+      activeFilter: 1,
+      isModalVisible: false,
+      title: 'Cadastrar Tarefa'
     }
   },
   methods: {
@@ -144,6 +149,12 @@ export default {
     },
     handleClickFilter(id) {
       this.activeFilter = id
+    },
+    openModal() {
+      this.isModalVisible = true
+    },
+    closeModal() {
+      this.isModalVisible = false
     }
   }
 }
@@ -258,13 +269,14 @@ export default {
         margin-left auto
         margin-right 2vw
         border-radius 80px
-        padding-inline 29px
+        padding-inline 20px
         cursor pointer
         display flex
         flex-direction column
+        margin-top 4vh
         .plus
           color white
-          font-size 80px
+          font-size 60px
           margin-top -13px
       .todo-list
         display flex

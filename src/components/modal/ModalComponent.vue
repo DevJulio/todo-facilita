@@ -2,6 +2,7 @@
 <template>
   <div v-if="isVisible" class="modal-overlay" @click="closeOnOverlayClick">
     <div class="modal-content" @click.stop>
+      <span class="title">{{ title }}</span>
       <button class="close-btn" @click="closeModal">&times;</button>
       <div class="modal-body">
         <slot></slot>
@@ -13,11 +14,13 @@
 <script>
 export default {
   name: 'FAModal',
-
   props: {
     isVisible: {
       type: Boolean,
       default: false
+    },
+    title: {
+      type: String
     }
   },
   methods: {
@@ -52,10 +55,17 @@ export default {
   padding 20px
   border-radius 8px
   box-shadow 0 5px 15px rgba(0, 0, 0, 0.3)
-  width 90%
-  max-width 500px
+  width 100%
+  max-width 40vw
   position relative
+  padding-left 2vw
+  padding-top 3vh
 
+.title
+  font-family $td-semi-bold
+  color $td-title
+  font-size 28px
+  padding-top 1vh
 .close-btn
   position absolute
   top 10px
@@ -64,8 +74,9 @@ export default {
   border none
   font-size 24px
   cursor pointer
+  color $td-input-lbl
 
 .modal-body
-  padding 20px
-  text-align center
+  // padding 20px
+  // text-align center
 </style>
