@@ -12,7 +12,8 @@ import {
   faChevronRight,
   faMagnifyingGlass,
   faEllipsisVertical,
-  faCircle
+  faCircle,
+  faTrashCan
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -24,7 +25,8 @@ library.add([
   faChevronRight,
   faMagnifyingGlass,
   faEllipsisVertical,
-  faCircle
+  faCircle,
+  faTrashCan
 ])
 
 const app = createApp(App).component('fa', FontAwesomeIcon)

@@ -39,13 +39,14 @@ export default {
 
 <style lang="stylus" scoped>
 @import '../../assets/styles/theme.styl'
-
+// O padding não atende a proporçao no login, mas faz sentido diminuir o padding para poder atender o restante do sistema
+//pensando em componentização e reaproveitamento eficiente do código.
 button
-  padding 22px 20px
+  padding 15px 20px
   border none
   border-radius 4px
   cursor pointer
-  font-size 16px
+  font-size 18px
   font-family $td-semi-bold
   color white
   width 100%

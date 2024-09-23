@@ -96,6 +96,7 @@
               badge="Urgente"
               :is-disabled="true"
             />
+            <!-- @click="openModalConfirmDelete" -->
             <FATodoItem label="Criar projeto Vue.js" badge="Importante" />
             <FATodoItem label="Montar telas HTML/CSS" badge="Importante" />
             <FATodoItem label="Separar componentes" />
@@ -137,7 +138,6 @@ export default {
   }
 }
 </script>
-
 <style lang="stylus" scoped>
 @import '../assets/styles/theme.styl'
 
@@ -219,7 +219,7 @@ export default {
         display flex
         flex-direction column
         align-self center
-        margin-top 10vh
+        margin-top 9vh
 
         .title
           font-family $td-bold

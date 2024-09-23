@@ -1,17 +1,20 @@
 <template>
+  <!-- em um cenário real, o popover poderia ser um componente e receber os items de forma dinâmica para serem exibidos -->
+  <!-- os itens a serem exibidos podem ser um array com o elemento e a função a ser executada, nesse caso não faz sentido -->
+  <!-- já que o uso é único e exclusivo para a edição e exclusão de um item. -->
   <div class="popover-container">
     <fa
       icon="ellipsis-vertical"
-      style="margin-left: 1vw; color: #9caec1; cursor: pointer; margin-top: 5px; margin-right: 8px"
+      style="margin-left: 20px; color: #9caec1; cursor: pointer; margin-top: 5px; margin-right: 8px"
       @click="togglePopover"
     />
     <div v-if="showPopover" class="popover-content">
       <div class="item-list">
-        <div class="item">
+        <div class="item" @click="onEdit">
           <fa icon="circle" style="color: #5ecda5" />
           <span class="label"> Editar </span>
         </div>
-        <div class="item">
+        <div class="item" @click="openModalConfirmDelete">
           <fa icon="circle" style="color: #d6e6ef" />
           <span class="label"> Excluir </span>
         </div>
@@ -22,20 +25,39 @@
         @click="togglePopover"
       />
     </div>
+    <!-- <FAModal :isVisible="isModalDeleteVisible" @close="closeModalConfirmDelete">
+      <h2>Dynamic Modal Content</h2>
+      <p>This content is passed dynamically using Vue's slot system.</p>
+    </FAModal> -->
+    <FAModalConfirm :isVisible="isModalDeleteVisible" @close="closeModalConfirmDelete" />
   </div>
 </template>
 
 <script>
+import FAModal from '../modal/ModalComponent.vue'
+import FAModalConfirm from '../modal-confirm/ModalConfirm.vue'
+
 export default {
   name: 'FAPopOver',
+  components: {
+    FAModal,
+    FAModalConfirm
+  },
   data() {
     return {
-      showPopover: false
+      showPopover: false,
+      isModalDeleteVisible: false
     }
   },
   methods: {
     togglePopover() {
       this.showPopover = !this.showPopover
+    },
+    openModalConfirmDelete() {
+      this.isModalDeleteVisible = true
+    },
+    closeModalConfirmDelete() {
+      this.isModalDeleteVisible = false
     }
   }
 }
