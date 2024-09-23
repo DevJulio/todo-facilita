@@ -96,11 +96,21 @@
               badge="Urgente"
               :is-disabled="true"
             />
-            <!-- @click="openModalConfirmDelete" -->
             <FATodoItem label="Criar projeto Vue.js" badge="Importante" />
             <FATodoItem label="Montar telas HTML/CSS" badge="Importante" />
             <FATodoItem label="Separar componentes" />
             <FATodoItem label="Programar componentes" />
+            <FATodoItem label="Separar componentes" />
+            <FATodoItem label="Programar componentes" />
+            <FATodoItem label="Separar componentes" />
+            <FATodoItem label="Programar componentes" />
+            <FATodoItem label="Separar componentes" />
+            <FATodoItem label="Programar componentes" />
+            <FATodoItem label="Separar componentes" />
+            <FATodoItem label="Programar componentes" />
+          </div>
+          <div class="floating-btn">
+            <span class="plus">+</span>
           </div>
         </div>
       </div>
@@ -243,7 +253,19 @@ export default {
           .emphasis_
             color $td-blue
             text-decoration underline
-
+      .floating-btn
+        background-color $td-green-disable
+        margin-left auto
+        margin-right 2vw
+        border-radius 80px
+        padding-inline 29px
+        cursor pointer
+        display flex
+        flex-direction column
+        .plus
+          color white
+          font-size 80px
+          margin-top -13px
       .todo-list
         display flex
         flex-direction column
@@ -254,4 +276,5 @@ export default {
         align-items center
         width 32.5vw
         align-self center
+        height 100%
 </style>
