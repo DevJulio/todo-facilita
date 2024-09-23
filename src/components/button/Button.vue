@@ -1,5 +1,5 @@
 <template>
-  <button :class="buttonClass" @click="exec">
+  <button :class="buttonClass" @click="exec" :disabled="type == 'disable' ? true : false">
     {{ label }}
   </button>
 </template>
@@ -7,12 +7,17 @@
 <script>
 export default {
   name: 'FAButton',
+  data() {
+    return {
+      localType: ''
+    }
+  },
   props: {
     type: {
       type: String,
       default: 'success',
       validator(value) {
-        return ['success', 'danger'].includes(value)
+        return ['success', 'danger', 'disable'].includes(value)
       }
     },
     label: {
@@ -26,12 +31,28 @@ export default {
   },
   computed: {
     buttonClass() {
-      return this.type === 'success' ? 'success' : 'danger'
+      switch (this.type) {
+        case 'success':
+          // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+          this.localType = 'success'
+          break
+        case 'danger':
+          // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+          this.localType = 'danger'
+          break
+        case 'disabled':
+          // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+          this.localType = 'disabled'
+          break
+      }
+      return this.localType
     }
   },
   methods: {
     exec() {
-      this.action()
+      if (this.localType != 'disabled') {
+        this.action()
+      }
     }
   }
 }
@@ -56,7 +77,9 @@ button
 
 .danger
   background-color $td-red
-
+.disabled
+  background-color $td-blue-aux
+  cursor not-allowed
 button:hover
   opacity 0.9
 </style>

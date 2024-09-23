@@ -115,7 +115,13 @@
         </div>
       </div>
     </div>
-    <FAModalForm :isVisible="isModalVisible" @close="closeModal" :title="title" />
+    <FAModalForm
+      :isVisible="isModalVisible"
+      @close="closeModal"
+      :title="title"
+      :is-disabled="false"
+      btn-lbl="Adicionar"
+    />
   </div>
 </template>
 <script>

@@ -107,7 +107,7 @@ export default {
     display flex
     flex-direction column
     align-self center
-    margin-top -2vw
+    margin-top -4vw
     width 30vw
    .title
      font-size 20px
