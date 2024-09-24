@@ -73,9 +73,9 @@ export default createStore({
       }
       state.todos[localIndex].done = !state.todos[localIndex].done
     },
-    deleteTodo(state, id) {
-      const localIndex = state.todos.findIndex((td) => td.id == id)
-      state.todos = state.todos.splice(localIndex, 1)
+    deleteTodo(state) {
+      const localIndex = state.todos.findIndex((td) => td.id == state.itemUpdated)
+      state.todos.splice(localIndex, 1)
     },
     itemToBeUpdated(state, id) {
       state.itemUpdated = id

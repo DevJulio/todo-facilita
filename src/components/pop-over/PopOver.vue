@@ -4,6 +4,7 @@
     <fa
       icon="ellipsis-vertical"
       style="margin-left: 20px; color: #9caec1; cursor: pointer; margin-top: 5px; margin-right: 8px"
+      @click="handleTodoItem"
     />
     <div v-if="idItem == canShow" class="popover-content">
       <div class="item-list">
@@ -53,11 +54,13 @@ export default {
     closeModalConfirmDelete() {
       this.isModalDeleteVisible = false
     },
+    //Para manter apenas um popover aberto
     handleTodoItem() {
-      this.$store.commit('itemToBeUpdated', this.idItem)
-    },
-    handleTodoItemAux() {
-      this.$store.commit('itemToBeUpdated', -1)
+      if (this.idItem == this.canShow) {
+        this.$store.commit('itemToBeUpdated', -1)
+      } else {
+        this.$store.commit('itemToBeUpdated', this.idItem)
+      }
     }
   },
   computed: {

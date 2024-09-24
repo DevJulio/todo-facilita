@@ -14,7 +14,7 @@
         <span class="description">Esta ação não poderá ser desfeita.</span>
         <div class="modal-footer">
           <FAButton label="Cancelar" :action="closeModal" />
-          <FAButton label="Confirmar" type="danger" />
+          <FAButton label="Confirmar" type="danger" :action="deleteModal" />
         </div>
       </div>
     </div>
@@ -36,6 +36,10 @@ export default {
     }
   },
   methods: {
+    deleteModal() {
+      this.$store.commit('deleteTodo')
+      this.$emit('close')
+    },
     closeModal() {
       this.$emit('close')
     },

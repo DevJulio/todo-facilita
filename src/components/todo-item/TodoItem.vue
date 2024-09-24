@@ -13,7 +13,7 @@
       {{ badge }}
     </div>
     <div :style="{ pointerEvents: isCheked == true ? 'none' : 'all' }">
-      <FAPopOver @click="handleTodoItem" :id-item="idItem" />
+      <FAPopOver :id-item="idItem" />
     </div>
   </div>
 </template>
@@ -45,14 +45,6 @@ export default {
   methods: {
     handleCheckboxChange() {
       this.$store.commit('updateStatus', this.idItem)
-    },
-    //Para manter apenas um popover aberto
-    handleTodoItem() {
-      if (this.idItem == this.canShow) {
-        this.$store.commit('itemToBeUpdated', -1)
-      } else {
-        this.$store.commit('itemToBeUpdated', this.idItem)
-      }
     }
   },
   computed: {
