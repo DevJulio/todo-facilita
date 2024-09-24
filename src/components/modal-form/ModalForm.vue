@@ -79,8 +79,8 @@ export default {
     setDescription(param) {
       this.description = param
     },
-    createTodo() {
-      console.log('Formulário enviado', this.titleTask, this.description, this.selectedOption)
+    setOption(param) {
+      this.selectedOption = param
     },
     canCreate() {
       if (this.titleTask != '' && this.description != '') {
@@ -97,7 +97,19 @@ export default {
         badge: this.selectedOption,
         description: this.description
       })
+      this.$emit('close')
     }
+    // loadValues() {
+    //   if (this.titleTaskParam != '') {
+    //     this.setTitle(this.titleTaskParam)
+    //   }
+    //   if (this.descriptionParam != '') {
+    //     this.setDescription(this.descriptionParam)
+    //   }
+    //   if (this.selectedOptionParam != '') {
+    //     this.setOption(this.selectedOptionParam)
+    //   }
+    // }
     // increment() {
     //   this.$store.commit('increment')
     //   console.log(this.$store.state.count)

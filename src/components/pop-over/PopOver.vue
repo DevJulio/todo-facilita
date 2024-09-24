@@ -10,7 +10,7 @@
       <div class="item-list">
         <div class="item" @click="onEdit">
           <fa icon="circle" style="color: #5ecda5" />
-          <span class="label"> Editar </span>
+          <span class="label" @click="openModal"> Editar </span>
         </div>
         <div class="item" @click="openModalConfirmDelete">
           <fa icon="circle" style="color: #d6e6ef" />
@@ -24,12 +24,18 @@
       />
     </div>
     <FAModalConfirm :isVisible="isModalDeleteVisible" @close="closeModalConfirmDelete" />
+    <FAModalForm
+      :isVisible="isModalVisible"
+      @close="closeModal"
+      title="Editar Tarefa"
+      btn-lbl="Editar"
+    />
   </div>
 </template>
 
 <script>
 import FAModalConfirm from '../modal-confirm/ModalConfirm.vue'
-
+import FAModalForm from '../modal-form/ModalForm.vue'
 export default {
   name: 'FAPopOver',
   props: {
@@ -39,12 +45,19 @@ export default {
     }
   },
   components: {
-    FAModalConfirm
+    FAModalConfirm,
+    FAModalForm
+  },
+  computed: {
+    canShow() {
+      return this.$store.state.itemUpdated
+    }
   },
   data() {
     return {
       showPopover: false,
-      isModalDeleteVisible: false
+      isModalDeleteVisible: false,
+      isModalVisible: false
     }
   },
   methods: {
@@ -56,7 +69,6 @@ export default {
     },
     //Para manter apenas um popover aberto
     handleTodoItem() {
-      console.log(this.idItem, this.canShow)
       if (this.idItem == this.canShow) {
         this.$store.commit('itemToBeUpdated', -1)
       } else {
@@ -65,11 +77,12 @@ export default {
     },
     togglePopover() {
       this.$store.commit('itemToBeUpdated', -1)
-    }
-  },
-  computed: {
-    canShow() {
-      return this.$store.state.itemUpdated
+    },
+    openModal() {
+      this.isModalVisible = true
+    },
+    closeModal() {
+      this.isModalVisible = false
     }
   }
 }
@@ -110,8 +123,7 @@ export default {
      .label
        font-family $td-semi-bold
        color #748CA5
-     //.icon
-  &::before
+   &::before
     content ''
     position absolute
     top -10px

@@ -109,7 +109,7 @@
     <FAModalForm
       :isVisible="isModalVisible"
       @close="closeModal"
-      :title="title"
+      title="Cadastrar Tarefa"
       btn-lbl="Adicionar"
     />
   </div>
@@ -135,8 +135,7 @@ export default {
     return {
       activeAction: 1,
       activeFilter: 1,
-      isModalVisible: false,
-      title: 'Cadastrar Tarefa'
+      isModalVisible: false
     }
   },
   methods: {
