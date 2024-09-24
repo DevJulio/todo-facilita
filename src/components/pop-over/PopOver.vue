@@ -26,6 +26,7 @@
     <FAModalConfirm :isVisible="isModalDeleteVisible" @close="closeModalConfirmDelete" />
     <FAModalForm
       :isVisible="isModalVisible"
+      :title-task-param="'teste'"
       @close="closeModal"
       title="Editar Tarefa"
       btn-lbl="Editar"

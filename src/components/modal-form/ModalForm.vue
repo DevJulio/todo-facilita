@@ -51,12 +51,24 @@ export default {
     },
     btnLbl: {
       type: String
+    },
+    titleTaskParam: {
+      type: String,
+      default: ''
+    },
+    descriptionParam: {
+      type: String,
+      default: ''
+    },
+    selectedOptionParam: {
+      type: String,
+      default: ''
     }
   },
   data() {
     return {
       isModalVisible: false,
-      titleTask: '',
+      titleTask: this.titleTaskParam ?? '',
       description: '',
       selectedOption: '',
       typeBtn: 'disabled'
@@ -66,6 +78,7 @@ export default {
     titleTask: 'canCreate',
     description: 'canCreate'
   },
+
   methods: {
     openModal() {
       this.isModalVisible = true
@@ -83,6 +96,7 @@ export default {
       this.selectedOption = param
     },
     canCreate() {
+      console.log(this.titleTaskParam)
       if (this.titleTask != '' && this.description != '') {
         this.typeBtn = 'success'
       } else {
@@ -97,23 +111,9 @@ export default {
         badge: this.selectedOption,
         description: this.description
       })
+      this.typeBtn = 'disabled'
       this.$emit('close')
     }
-    // loadValues() {
-    //   if (this.titleTaskParam != '') {
-    //     this.setTitle(this.titleTaskParam)
-    //   }
-    //   if (this.descriptionParam != '') {
-    //     this.setDescription(this.descriptionParam)
-    //   }
-    //   if (this.selectedOptionParam != '') {
-    //     this.setOption(this.selectedOptionParam)
-    //   }
-    // }
-    // increment() {
-    //   this.$store.commit('increment')
-    //   console.log(this.$store.state.count)
-    // }
   }
 }
 </script>
