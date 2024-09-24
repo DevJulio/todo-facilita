@@ -56,11 +56,15 @@ export default {
     },
     //Para manter apenas um popover aberto
     handleTodoItem() {
+      console.log(this.idItem, this.canShow)
       if (this.idItem == this.canShow) {
         this.$store.commit('itemToBeUpdated', -1)
       } else {
         this.$store.commit('itemToBeUpdated', this.idItem)
       }
+    },
+    togglePopover() {
+      this.$store.commit('itemToBeUpdated', -1)
     }
   },
   computed: {
