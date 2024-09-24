@@ -16,6 +16,7 @@ import {
   faTrashCan
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import store from './store'
 
 library.add([
   faCheck,
@@ -29,7 +30,7 @@ library.add([
   faTrashCan
 ])
 
-const app = createApp(App).component('fa', FontAwesomeIcon)
+const app = createApp(App).use(store).component('fa', FontAwesomeIcon)
 
 app.use(router)
 

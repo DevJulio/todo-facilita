@@ -91,23 +91,14 @@
             <FASearchInput placeholder="Buscar Tarefas" />
           </div>
           <div class="todo-list">
-            <FATodoItem
-              label="Planejar desenvolvimento do app TodoList"
-              badge="Urgente"
-              :is-disabled="true"
-            />
-            <FATodoItem label="Criar projeto Vue.js" badge="Importante" />
-            <FATodoItem label="Montar telas HTML/CSS" badge="Importante" />
-            <FATodoItem label="Separar componentes" />
-            <FATodoItem label="Programar componentes" />
-            <FATodoItem label="Separar componentes" />
-            <FATodoItem label="Programar componentes" />
-            <FATodoItem label="Separar componentes" />
-            <FATodoItem label="Programar componentes" />
-            <FATodoItem label="Separar componentes" />
-            <FATodoItem label="Programar componentes" />
-            <FATodoItem label="Separar componentes" />
-            <FATodoItem label="Programar componentes" />
+            <div style="display: flex; width: 100%" v-for="todo in todos" :key="todo.id">
+              <FATodoItem
+                :label="todo.titleTask"
+                :badge="todo.badge"
+                :is-cheked="todo.done"
+                :id-item="todo.id"
+              />
+            </div>
           </div>
           <div class="floating-btn" @click="openModal">
             <span class="plus">+</span>
@@ -119,7 +110,6 @@
       :isVisible="isModalVisible"
       @close="closeModal"
       :title="title"
-      :is-disabled="false"
       btn-lbl="Adicionar"
     />
   </div>
@@ -161,6 +151,11 @@ export default {
     },
     closeModal() {
       this.isModalVisible = false
+    }
+  },
+  computed: {
+    todos() {
+      return this.$store.state.todos
     }
   }
 }

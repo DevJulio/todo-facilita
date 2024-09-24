@@ -63,7 +63,7 @@ export default {
 .popover-container
   position relative
   display inline-block
-
+  margin-left auto
 .popover-content
   position absolute
   top -44%

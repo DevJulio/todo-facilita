@@ -1,43 +1,70 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import { createStore } from 'vuex'
 
-Vue.use(Vuex)
-
-export default new Vuex.Store({
+export default createStore({
   state: {
-    todos: []
-  },
-  mutations: {
-    ADD_TODO(state, todo) {
-      state.todos.push(todo)
-    },
-    REMOVE_TODO(state, todoId) {
-      state.todos = state.todos.filter((todo) => todo.id !== todoId)
-    },
-    TOGGLE_TODO(state, todoId) {
-      const todo = state.todos.find((todo) => todo.id === todoId)
-      if (todo) {
-        todo.completed = !todo.completed
+    todos: [
+      {
+        id: 1,
+        titleTask: 'Planejar desenvolvimento do app TodoList',
+        done: true,
+        badge: 'Urgente',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.'
+      },
+      {
+        id: 2,
+        titleTask: 'Criar projeto Vue.js',
+        done: false,
+        badge: 'Importante',
+        description: 'Loren'
+      },
+      {
+        id: 3,
+        titleTask: 'Montar telas HTML/CSS',
+        done: false,
+        badge: '',
+        description:
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa cupiditate consequatur illum mollitia'
+      },
+      {
+        id: 4,
+        titleTask: 'Separar componentes',
+        done: false,
+        badge: '',
+        description:
+          ' reiciendis pariatur magnam neque, unde quo eos voluptatibus consequuntur dignissimo'
+      },
+      {
+        id: 5,
+        titleTask: 'Programar componentes',
+        done: false,
+        badge: '',
+        description: 's, nihil, corrupti similique amet vel? Tenetur, unde?'
       }
-    }
-  },
-  actions: {
-    addTodo({ commit }, todo) {
-      commit('ADD_TODO', todo)
-    },
-    removeTodo({ commit }, todoId) {
-      commit('REMOVE_TODO', todoId)
-    },
-    toggleTodo({ commit }, todoId) {
-      commit('TOGGLE_TODO', todoId)
-    }
+    ]
   },
   getters: {
-    allTodos: (state) => state.todos,
-    completedTodos: (state) => state.todos.filter((todo) => todo.completed),
-    incompleteTodos: (state) => state.todos.filter((todo) => !todo.completed),
-    searchTodos: (state) => (query) => {
-      return state.todos.filter((todo) => todo.title.toLowerCase().includes(query.toLowerCase()))
+    doneTodos(state) {
+      return state.todos.filter((todo) => todo.done)
+    },
+    doneTodosCount(state, getters) {
+      return getters.doneTodos.length
+    },
+    searchTodo: (state) => (query) => {
+      return state.todos.find(
+        (todo) =>
+          todo.titleTask.toLowerCase.includes(query.toLowerCase()) ||
+          todo.description.toLowerCase.includes(query.toLowerCase())
+      )
+    }
+  },
+  mutations: {
+    addTodo(state, todo) {
+      state.todos.push(todo)
+      //this.commit('SAVE_TODOS')
+    },
+    updateStatus(state, id) {
+      const localIndex = state.todos.findIndex((td) => td.id == id)
+      state.todos[localIndex].done = !state.todos[localIndex].done
     }
   }
 })

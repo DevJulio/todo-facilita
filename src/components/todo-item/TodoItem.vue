@@ -1,8 +1,10 @@
 <template>
-  <div class="todo-item" :id="idItem" :style="{ opacity: isDisabled == true ? '0.5' : '1' }">
-    <input type="checkbox" checked="checked" />
+  <div class="todo-item" :id="idItem" :style="{ opacity: isCheked == true ? '0.5' : '1' }">
+    <input type="checkbox" :checked="isCheked" @change="handleCheckboxChange" />
 
-    <span class="label">{{ label }}</span>
+    <span class="label" :style="{ textDecoration: isCheked == true ? 'line-through' : 'unset' }">{{
+      label
+    }}</span>
     <div
       class="badge"
       v-if="badge != ''"
@@ -10,7 +12,9 @@
     >
       {{ badge }}
     </div>
-    <FAPopOver />
+    <div :style="{ pointerEvents: isCheked == true ? 'none' : 'all' }">
+      <FAPopOver />
+    </div>
   </div>
 </template>
 
@@ -26,12 +30,8 @@ export default {
       type: String,
       required: true
     },
-    isDisabled: {
+    isCheked: {
       type: Boolean,
-      required: true
-    },
-    currentClicked: {
-      type: String,
       required: true
     },
     idItem: {
@@ -40,6 +40,11 @@ export default {
     },
     badge: {
       type: String
+    }
+  },
+  methods: {
+    handleCheckboxChange() {
+      this.$store.commit('updateStatus', this.idItem)
     }
   }
 }
@@ -53,6 +58,7 @@ export default {
   font-family $td-semi-bold
   margin-left 1vw
   font-size 15px
+  width 100%
  .todo-item
   display: flex;
   flex-direction row

@@ -6,17 +6,18 @@
       class="input-style"
       :id="inputId"
       :placeholder="placeholder"
-      :value="value"
+      :v-model="value"
       :type="inputType"
       v-if="!isTextField"
-      @input="updateValue($event.target.value)"
+      @input="this.setValue($event.target.value)"
     />
     <span class="label" v-if="isTextField">{{ label }}</span>
     <textarea
       class="input-style"
       v-if="isTextField"
       :rows="7"
-      @input="updateValue($event.target.value)"
+      :v-model="value"
+      @input="this.setValue($event.target.value)"
     ></textarea>
   </div>
 </template>
@@ -44,20 +45,18 @@ export default {
     isTextField: {
       type: Boolean,
       default: false
+    },
+    setValue: {
+      type: Function,
+      required: true
     }
   },
   computed: {
     inputId() {
-      //Gera um id baseado na label
       return this.label.toLowerCase().replace(/\s+/g, '-')
     },
     inputType() {
       return this.isPassword ? 'password' : 'text'
-    }
-  },
-  methods: {
-    updateValue(newValue) {
-      this.$emit('input', newValue)
     }
   }
 }

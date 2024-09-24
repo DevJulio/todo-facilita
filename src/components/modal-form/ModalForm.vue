@@ -1,18 +1,24 @@
 <template>
   <FAModal :isVisible="isVisible" @close="closeModal" :title="title">
     <div class="form">
-      <FAInput label="Título:" placeholder="" :v-model="titleTask" />
-      <FAInput label="Descrição:" placeholder="" :v-model="description" isTextField="true" />
+      <FAInput label="Título:" placeholder="" :v-model="titleTask" :set-value="setTitle" />
+      <FAInput
+        label="Descrição:"
+        placeholder=""
+        :v-model="description"
+        isTextField="true"
+        :set-value="setDescription"
+      />
       <div class="footer">
         <div class="radio-container">
-          <input type="radio" value="opcao1" v-model="selectedOption" />
+          <input type="radio" value="Urgente" v-model="selectedOption" />
           <span class="lbl">Urgente</span>
-          <input type="radio" value="opcao1" v-model="selectedOption" />
+          <input type="radio" value="Importante" v-model="selectedOption" />
           <span class="lbl">Importante</span>
         </div>
 
         <div class="btn-container">
-          <FAButton :action="login" :label="btnLbl" :type="isDisabled ? 'disabled' : 'success'" />
+          <FAButton :action="addTodo" :label="btnLbl" :type="typeBtn" />
         </div>
       </div>
     </div>
@@ -51,8 +57,14 @@ export default {
     return {
       isModalVisible: false,
       titleTask: '',
-      description: ''
+      description: '',
+      selectedOption: '',
+      typeBtn: 'disabled'
     }
+  },
+  watch: {
+    titleTask: 'canCreate',
+    description: 'canCreate'
   },
   methods: {
     openModal() {
@@ -60,7 +72,36 @@ export default {
     },
     closeModal() {
       this.isModalVisible = false
+    },
+    setTitle(param) {
+      this.titleTask = param
+    },
+    setDescription(param) {
+      this.description = param
+    },
+    createTodo() {
+      console.log('Formulário enviado', this.titleTask, this.description, this.selectedOption)
+    },
+    canCreate() {
+      if (this.titleTask != '' && this.description != '') {
+        this.typeBtn = 'success'
+      } else {
+        this.typeBtn = 'disabled'
+      }
+    },
+    addTodo() {
+      this.$store.commit('addTodo', {
+        id: Math.random(),
+        titleTask: this.titleTask,
+        done: false,
+        badge: this.selectedOption,
+        description: this.description
+      })
     }
+    // increment() {
+    //   this.$store.commit('increment')
+    //   console.log(this.$store.state.count)
+    // }
   }
 }
 </script>
