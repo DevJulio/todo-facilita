@@ -40,7 +40,8 @@ export default createStore({
         badge: '',
         description: 's, nihil, corrupti similique amet vel? Tenetur, unde?'
       }
-    ]
+    ],
+    itemUpdated: ''
   },
   getters: {
     doneTodos(state) {
@@ -55,6 +56,9 @@ export default createStore({
           todo.titleTask.toLowerCase.includes(query.toLowerCase()) ||
           todo.description.toLowerCase.includes(query.toLowerCase())
       )
+    },
+    getItemUpdated(state) {
+      return state.itemUpdated
     }
   },
   mutations: {
@@ -64,7 +68,17 @@ export default createStore({
     },
     updateStatus(state, id) {
       const localIndex = state.todos.findIndex((td) => td.id == id)
+      if (state.itemUpdated == state.todos[localIndex].id) {
+        state.itemUpdated = -1
+      }
       state.todos[localIndex].done = !state.todos[localIndex].done
+    },
+    deleteTodo(state, id) {
+      const localIndex = state.todos.findIndex((td) => td.id == id)
+      state.todos = state.todos.splice(localIndex, 1)
+    },
+    itemToBeUpdated(state, id) {
+      state.itemUpdated = id
     }
   }
 })

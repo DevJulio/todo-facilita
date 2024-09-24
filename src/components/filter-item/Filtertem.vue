@@ -1,4 +1,3 @@
-<!-- :style="{ backgroundColor: idItem == currentClicked ? '#1182F2' : '#2693FF' }" -->
 <template>
   <div class="filter-item" :id="idItem">
     <fa

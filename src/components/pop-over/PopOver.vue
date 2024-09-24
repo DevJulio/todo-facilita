@@ -1,14 +1,11 @@
 <template>
-  <!-- em um cenário real, o popover poderia ser um componente e receber os items de forma dinâmica para serem exibidos -->
-  <!-- os itens a serem exibidos podem ser um array com o elemento e a função a ser executada, nesse caso  -->
-  <!-- o uso é único e exclusivo para a edição e exclusão de um item. -->
+  <!-- Em um sistema, o popover poderia ser um componente e receber os items de forma dinâmica para serem exibidos -->
   <div class="popover-container">
     <fa
       icon="ellipsis-vertical"
       style="margin-left: 20px; color: #9caec1; cursor: pointer; margin-top: 5px; margin-right: 8px"
-      @click="togglePopover"
     />
-    <div v-if="showPopover" class="popover-content">
+    <div v-if="idItem == canShow" class="popover-content">
       <div class="item-list">
         <div class="item" @click="onEdit">
           <fa icon="circle" style="color: #5ecda5" />
@@ -34,6 +31,12 @@ import FAModalConfirm from '../modal-confirm/ModalConfirm.vue'
 
 export default {
   name: 'FAPopOver',
+  props: {
+    idItem: {
+      type: String,
+      required: true
+    }
+  },
   components: {
     FAModalConfirm
   },
@@ -44,14 +47,22 @@ export default {
     }
   },
   methods: {
-    togglePopover() {
-      this.showPopover = !this.showPopover
-    },
     openModalConfirmDelete() {
       this.isModalDeleteVisible = true
     },
     closeModalConfirmDelete() {
       this.isModalDeleteVisible = false
+    },
+    handleTodoItem() {
+      this.$store.commit('itemToBeUpdated', this.idItem)
+    },
+    handleTodoItemAux() {
+      this.$store.commit('itemToBeUpdated', -1)
+    }
+  },
+  computed: {
+    canShow() {
+      return this.$store.state.itemUpdated
     }
   }
 }
